@@ -1,0 +1,26 @@
+<link rel="stylesheet" type="text/css" href="../css/menu.css">
+<div class="menu-container">
+	<div class="menu-btn">+</div>
+	<div class="menu-list">
+		<div class="menu-item menu-today">今天</div>
+		<div class="menu-item menu-zone">空间</div>
+		<div class="menu-item menu-calendar">日历</div>
+		<div class="menu-item menu-self">我</div>
+	</div>
+</div>
+<script type="text/javascript">
+	;(function () {
+		var btn = document.querySelector('.menu-btn');
+		btn.onclick = function (e) {
+			var e = e || window.event,
+				t = e.target || e.srcElement,
+				p = t.parentNode,
+				c = p.className;
+			if ( c === 'menu-container' ) {
+				p.className = 'menu-container menu-list-show';
+			} else {
+				p.className = 'menu-container';
+			}
+		}
+	})()
+</script>

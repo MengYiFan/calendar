@@ -1,0 +1,32 @@
+{{include './header'}}
+<div class="login-container">
+	<div class="login-user-img">
+		<img class="login-user-img-url" src="">
+	</div>
+	<form action="api/login" method="post">
+		<div class="input-container">
+			<input class="input-default" id="user-name" type="text" name="userName" required="required">
+			<label class="input-default-label" for="user-name">账号:</label>
+			<div class="input-bar"></div>
+		</div>
+		<div class="input-container">
+			<input class="input-default" id="user-pwd" type="password" name="userPassword" required="required">
+			<label class="input-default-label" for="user-pwd">密码:</label>
+			<div class="input-bar"></div>
+		</div>
+	</form>
+	<div class="btn"></div>
+	<script type="text/javascript">
+		;(function () {
+			document.querySelector('#user-name').onchange = function (e) {
+				if ( e.target.value == 'MISH') {
+					document.querySelector('.login-user-img-url').setAttribute('src', 'images/mao.jpg');
+				}
+			}
+			document.querySelector('.btn').onclick = function (e) {
+				e.target.className = 'btn btn-success';
+			}
+		})()
+	</script>
+</div>
+{{include './footer'}}

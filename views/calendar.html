@@ -1,0 +1,77 @@
+{{include './header'}}
+{{include './menu'}}
+<link rel="stylesheet" type="text/css" href="../css/calendar.css">
+<p class="calendar-year">
+	<span class="calendar-year-number" contenteditable="true">{{data.paramsYear}}</span> 年
+</p>
+<div class="calendar swiper-container swiper-container-horizontal">
+	<div class="swiper-wrapper">
+	{{each data.resArr as value index}}
+		<div class="calendar-container swiper-slide">
+			<i class="calendar-pic-mask"></i>
+			<img src="{{data.picUrlArr[index]}}" class="swiper-lazy calendar-pic">
+			<h2 class="calendar-mouth-number">
+				{{index+1}} 月
+			</h2>
+			{{each data.weekOrderArr as week weekIndex}}
+				<div class="calendar-item calendar-title">{{week}}</div>
+			{{/each}}
+			{{each value as v i}}
+				{{if v == ' '}}
+					<div class="calendar-item"></div>
+				{{else}}
+					{{if v.day == data.currentDate && index == data.currentMouth && data.paramsYear == data.currentYear }}
+						<div class="calendar-item calendar-value calendar-current">
+					{{else}}
+						<div class="calendar-item calendar-value">
+					{{/if}}
+					<span>{{v.day}}</span>
+					{{if v.data.status === 'TRUE'}}
+						{{if v.data.value === 1}}
+							<label class="calendar-state-finish">·</label>
+						{{else if v.data.value === -1}}
+							<label class="calendar-state-unfinish">·</label>
+						{{else}}
+							<label class="calendar-state-cancle">·</label>
+						{{/if}}
+					{{/if}}
+					</div>
+				{{/if}}
+			{{/each}}
+		</div>
+	{{/each}}
+	</div>
+</div>
+<div class="explain-state">
+	<label class="explain-state-finish">·</label>完成
+	<label class="explain-state-unfinish">·</label>忘记
+	<label class="explain-state-cancle">·</label>请假
+</div>
+<script src="../lib/sea.js"></script>
+<script src="../lib/config.js"></script>
+<script>
+    seajs.use(['swiperCSS', 'swiper'], function() {
+    	var clientW = window.screen.width,
+    		spaceBetween = (clientW / 10 ) * 0.5;
+	    var swiper = new Swiper('.swiper-container', {
+	        paginationClickable: true,
+	        spaceBetween: spaceBetween,
+	        initialSlide : {{data.currentMouth}},
+	        slidesPerView: 'auto',
+        	centeredSlides: true,
+        	// effect : 'coverflow',
+        	// coverflow: {
+	        //     rotate: 50,
+	        //     stretch: 0,
+	        //     depth: 100,
+	        //     modifier: 1,
+	        //     slideShadows : false
+	        // },
+        	lazyLoading : false,
+	        onInit: function (swiper) {
+	        	$('body').removeClass('body-hide').addClass('body-show');
+	        }
+	    }); 
+	});
+</script>
+{{include './footer'}}

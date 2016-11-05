@@ -1,0 +1,10 @@
+{
+	"router": {
+		"/calendar": "../routes/calendar",
+		"/api": "../routes/api",
+		"/login": "../routes/login",
+		"/index": "../routes/index",
+		"/": "../routes/index",
+		"/*": "../routes/404"
+	}
+}

@@ -1,0 +1,79 @@
+.menu-container {
+	position: fixed;
+    bottom: 1.8rem;
+    right: 1rem;
+    font-size: 0.373333rem;
+    text-align: center;
+    color: #444;
+    z-index: 9999;
+    border-radius: 50%;
+    border: 1px solid #a6a6a6;
+}
+
+.menu-btn, .menu-item {
+    background: #fff;
+    line-height: 1rem;
+    cursor: pointer;
+}
+
+.menu-btn {
+	width: 1rem;
+	height: 1rem;
+	border-radius: 50%;
+	-webkit-transition: all .6s ease-out;
+    transition: all .6s ease-out;
+}
+
+.menu-list {
+	position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.menu-item {
+    position: absolute;
+    top: .5rem;
+    left: .5rem;
+    width: 0;
+    height: 0;
+    font-size: 0.32rem; 
+    border-radius: 0;
+    z-index: -1;
+    overflow: hidden;
+    transform: rotate(0deg) translate(0px);
+    -webkit-transition: all .6s ease-out;
+    transition: all .6s ease-out;
+}
+
+.menu-list-show .menu-item {
+	width: 1rem;
+	height: 1rem;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+}
+
+.menu-list-show .menu-btn, .menu-list-show .menu-item {
+	background: #333;
+    color: #ffffff;
+}
+
+.menu-list-show .menu-btn {
+	border-radius: 10px;
+}
+
+.menu-list-show .menu-today {
+	transform: rotate(60deg) translate(-1.5rem);
+}
+
+.menu-list-show .menu-zone {
+	transform: rotate(20deg) translate(-1.5rem);
+}
+
+.menu-list-show .menu-calendar {
+	transform: rotate(-20deg) translate(-1.5rem);
+}
+
+.menu-list-show .menu-self {
+	transform: rotate(-60deg) translate(-1.5rem);
+}
